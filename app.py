@@ -23,7 +23,7 @@ def send():
     msg = EmailMessage()
     msg['Subject'] = f'New Contact Form Submission from {name}'
     msg['From'] = gmail_user
-    msg['To'] = os.environ.get('To_GMAIL_PASS')
+    msg['To'] = os.environ.get('To_GMAIL_USER')
     msg.set_content(f'Name: {name}\nEmail: {email}\nMessage:\n{message}')
 
     # Send the email
