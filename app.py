@@ -16,14 +16,14 @@ def send():
     message = request.form.get('message')
 
     # Load email credentials from environment variables
-    gmail_user = "rohanshau6@gmail.com"
-    gmail_pass = "flxs ovxc anfd ktne"
+    gmail_user = os.environ.get('GMAIL_USER')
+    gmail_pass = os.environ.get('GMAIL_PASS')
 
     # Prepare the email
     msg = EmailMessage()
     msg['Subject'] = f'New Contact Form Submission from {name}'
     msg['From'] = gmail_user
-    msg['To'] = "ayushsawai03@gmail.com"
+    msg['To'] = os.environ.get('To_GMAIL_PASS')
     msg.set_content(f'Name: {name}\nEmail: {email}\nMessage:\n{message}')
 
     # Send the email
