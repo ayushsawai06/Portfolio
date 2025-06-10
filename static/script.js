@@ -2,14 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================
   // Mobile Navigation Toggle
   // =========================
-  document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.querySelector('.hamburger');
   const nav = document.querySelector('nav');
+  const navLinks = document.querySelectorAll('nav a');
 
-  hamburger.addEventListener('click', () => {
+  hamburger?.addEventListener('click', () => {
     nav.classList.toggle('active');
   });
-});
 
   // =========================
   // Scroll Spy with IntersectionObserver
@@ -29,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.forEach(link => link.classList.remove('active'));
         // Add active to the one in view
         if (link) {
-          link.classList.add('active'); // Updated from 'active-link'
+          link.classList.add('active');
         }
       }
     });
@@ -55,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
           section.scrollIntoView({ behavior: 'smooth' });
         }
       }
-
       // Auto close nav on mobile after clicking link
       nav.classList.remove('active');
     });
@@ -80,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
       letterIndex++;
     }
 
-    typingElement.innerHTML = currentWord.substring(0, letterIndex);
+    typingElement.textContent = currentWord.substring(0, letterIndex);
 
     let typeSpeed = isDeleting ? 100 : 200;
 
@@ -96,35 +94,31 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(type, typeSpeed);
   }
 
-  type();
+  if (typingElement) type();
 
   // =========================
   // Close nav if clicked outside (Mobile UX)
   // =========================
   document.addEventListener('click', (e) => {
-    if (!hamburger.contains(e.target) && !nav.contains(e.target)) {
+    if (hamburger && nav && !hamburger.contains(e.target) && !nav.contains(e.target)) {
       nav.classList.remove('active');
     }
   });
-});
 
-// popup.js
-
-document.addEventListener('DOMContentLoaded', function () {
+  // =========================
+  // Toast/Contact Form Popup (if form is on same page)
+  // =========================
   const form = document.querySelector('.contact-form');
   const toast = document.getElementById('toast');
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault(); // Prevent real submission for now
-
-    // Show toast
-    toast.classList.add('show');
-
-    // Hide after 3 seconds
-    setTimeout(() => {
-      toast.classList.remove('show');
-      form.reset(); // Optional: Reset form after toast
-    }, 3000);
-  });
+  if (form && toast) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+        form.reset();
+      }, 3000);
+    });
+  }
 });
-
