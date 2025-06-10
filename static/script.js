@@ -2,13 +2,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================
   // Mobile Navigation Toggle
   // =========================
+  document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.querySelector('.hamburger');
   const nav = document.querySelector('nav');
-  const navLinks = document.querySelectorAll('nav a');
 
   hamburger.addEventListener('click', () => {
     nav.classList.toggle('active');
   });
+});
 
   // =========================
   // Scroll Spy with IntersectionObserver
